@@ -84,7 +84,7 @@ rem.IN THE SOFTWARE.
         if "%1" == "" (
             call :option-error^
                 %command%^
-                "Expected an API version %0."
+                "Expected an API version after %0."
             endlocal
             exit /b 1
         )
@@ -97,7 +97,7 @@ rem.IN THE SOFTWARE.
         if not exist "%0" (
             call :option-error^
                 %command%^
-                "The project folder '%0' does not exist."
+                "Package folder '%0' does not exist."
             endlocal
             exit /b 1
         )
@@ -110,7 +110,7 @@ rem.IN THE SOFTWARE.
     if "%package%" == "" (
         call :option-error^
             %command%^
-            "Path to the project is not defined."
+            "Package path not set."
         endlocal
         exit /b 1
     )
