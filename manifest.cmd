@@ -146,7 +146,7 @@ rem.IN THE SOFTWARE.
                 if not "!metadata!" == "" (
                     call :get-metadata-type "type" "!metadata!"
 
-                    for /f "tokens=3 delims=<>" %%c in ('type !metadata! ^| findstr apiVersion') do (
+                    for /f "tokens=3 delims=<>" %%c in ('findstr apiVersion "!metadata!"') do (
                         if "!latest-api-version!" == "" (
                             set latest-api-version=%%c
                         ) else if %%c gtr !latest-api-version! (
