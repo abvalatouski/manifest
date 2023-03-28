@@ -30,7 +30,7 @@ Options
 
 Examples
 
-    > manifest SFDX-PROJECT\force-app\main\default /v 42.69
+    > manifest SOME-SFDX-PROJECT\force-app\main\default /v 42.69
     <?xml version="1.0" encoding="UTF-8"?>
     <Package xmlns="http://soap.sforce.com/2006/04/metadata">
         ...

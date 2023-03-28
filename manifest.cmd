@@ -50,7 +50,7 @@ rem.IN THE SOFTWARE.
     echo.
     echo.Examples
     echo.
-    echo.    ^> %~n1 SFDX-PROJECT\force-app\main\default /v 42.69
+    echo.    ^> %~n1 SOME-SFDX-PROJECT\force-app\main\default /v 42.69
     echo.    ^<?xml version="1.0" encoding="UTF-8"?^>
     echo.    ^<Package^ xmlns="http://soap.sforce.com/2006/04/metadata"^>
     echo.        ...
