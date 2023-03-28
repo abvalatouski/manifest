@@ -57,6 +57,11 @@ rem.IN THE SOFTWARE.
     echo.        ^<version^>42.69^</version^>
     echo.    ^</Package^>
     echo.
+    echo.Notes
+    echo.
+    echo.    The script assumes that the given package has correct folder structure.
+    echo.    Also it assumes that the package has at least one member in it.
+    echo.
     echo.Source Code
     echo.
     echo.    Written by Aliaksei Valatouski ^<abvalatouski@gmail.com^>.
