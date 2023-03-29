@@ -31,7 +31,7 @@ rem.IN THE SOFTWARE.
 :usage (
     echo.Generates a manifest file for a Salesforce package.
     echo.
-    echo.    %~n1 package [/?] [/v api-version]
+    echo.    %~n1 package [/?] [/i] [/v api-version]
     echo.
     echo.Options
     echo.
@@ -39,6 +39,11 @@ rem.IN THE SOFTWARE.
     echo.
     echo.    /?              Show this help message.
     echo.                    Other options will be ignored.
+    echo.
+    echo.    /i              Outputs manifest directly in the package folder
+    echo.                    as `package.xml`.
+    echo.                    ==================
+    echo.                    Mnemonic: in-place
     echo.
     echo.    /v api-version  Used API version.
     echo.                    Unless is set the latest API version among all package
@@ -79,6 +84,8 @@ rem.IN THE SOFTWARE.
 
     set package=
     set api-version=
+    set in-place=
+    set output=
 
 :parse-option:
     if "%0" == "/?" (
@@ -96,6 +103,10 @@ rem.IN THE SOFTWARE.
 
         set api-version=%1
         shift
+        shift
+        goto :parse-option
+    ) else if /i "%0" == "/i" (
+        set in-place=1
         shift
         goto :parse-option
     ) else if not "%0" == "" (
@@ -120,6 +131,10 @@ rem.IN THE SOFTWARE.
         exit /b 1
     )
 
+    if "%in-place%" == "1" (
+        set output=%package%\package.xml
+    )
+
     goto :options-were-parsed
 )
 
@@ -130,6 +145,16 @@ rem.IN THE SOFTWARE.
 )
 
 :generate-manifest (
+    if "!output!" == "" (
+        call :print-manifest
+    ) else (
+        >"!output!" call :print-manifest
+    )
+
+    exit /b
+)
+
+:print-manifest (
     echo.^<?xml version="1.0" encoding="UTF-8"?^>
     echo.^<Package^ xmlns="http://soap.sforce.com/2006/04/metadata"^>
 

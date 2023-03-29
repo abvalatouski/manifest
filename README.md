@@ -11,7 +11,7 @@ Shortened help nessage:
 ```console
 Generates a manifest file for a Salesforce package.
 
-    manifest package [/?] [/v api-version]
+    manifest package [/?] [/i] [/v api-version]
 
 Options
 
@@ -19,6 +19,11 @@ Options
 
     /?              Show this help message.
                     Other options will be ignored.
+    
+    /i              Outputs manifest directly in the package folder
+                    as `package.xml`.
+                    ==================
+                    Mnemonic: in-place
 
     /v api-version  Used API version.
                     Unless is set the latest API version among all package
