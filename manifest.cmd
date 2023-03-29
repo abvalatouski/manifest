@@ -141,10 +141,25 @@ rem.IN THE SOFTWARE.
                 set filepath=%package%\%%a\%%b
                 set extension=%%~xb
 
-                call :get-metadata-path "metadata"
+                set metadata=
+                if /i "!extension!" == ".xml" (
+                    set metadata=!filepath!
+                ) else if "!extension!" == "" (
+                    for /f "tokens=*" %%c in ('dir /b "!filepath!"') do (
+                        if /i "%%~xc" == ".xml" (
+                            set metadata=!filepath!\%%c
+                        )
+                    )
+                )
 
                 if not "!metadata!" == "" (
-                    call :get-metadata-type "type" "!metadata!"
+                    set type=
+                    for /f "skip=1" %%c in (!metadata!) do (
+                        if "!type!" == "" (
+                            set type=%%c
+                            set type=!type:~1!
+                        )
+                    )
 
                     for /f "tokens=3 delims=<>" %%c in ('findstr apiVersion "!metadata!"') do (
                         if "!latest-api-version!" == "" (
@@ -186,32 +201,5 @@ rem.IN THE SOFTWARE.
 
     echo.^</Package^>
 
-    exit /b
-)
-
-:get-metadata-path (
-    set "%~1="
-    if /i "!extension!" == ".xml" (
-        set "%~1=!filepath!"
-    ) else if "!extension!" == "" (
-        for /f "tokens=*" %%c in ('dir /b "!filepath!"') do (
-            if /i "%%~xc" == ".xml" (
-                set "%~1=!filepath!\%%c"
-            )
-        )
-    )
-
-    exit /b
-)
-
-:get-metadata-type (
-    set "%~1="
-    for /f "skip=1" %%c in (!%~2!) do (
-        if "!%~1!" == "" (
-            set "%~1=%%c"
-        )
-    )
-
-    set "%~1=!%~1:~1!"
     exit /b
 )
