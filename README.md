@@ -1,9 +1,9 @@
-# `manifest`
+# `sfshow`
 
 Download the script with:
 
 ```console
-powershell -c "Invoke-WebRequest -Outfile manifest.cmd -Uri https://raw.githubusercontent.com/abvalatouski/manifest/master/manifest.cmd"
+powershell -c "Invoke-WebRequest -Outfile sfshow.cmd -Uri https://raw.githubusercontent.com/abvalatouski/sfshow/master/sfshow.cmd"
 ```
 
 Shortened help nessage:
@@ -11,7 +11,7 @@ Shortened help nessage:
 ```console
 Generates a manifest file for a Salesforce package.
 
-    manifest package [/?] [/i] [/v api-version]
+    sfshow package [/?] [/i] [/v api-version]
 
 Options
 
@@ -35,7 +35,7 @@ Options
 
 Examples
 
-    > manifest SOME-SFDX-PROJECT\force-app\main\default /v 42.69
+    > sfshow SOME-SFDX-PROJECT\force-app\main\default /v 42.69
     <?xml version="1.0" encoding="UTF-8"?>
     <Package xmlns="http://soap.sforce.com/2006/04/metadata">
         ...

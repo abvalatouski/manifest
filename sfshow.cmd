@@ -73,7 +73,7 @@ rem.IN THE SOFTWARE.
     echo.    The source code is licensed under the MIT License.
     echo.
     echo.    See 'type %~f1'
-    echo.    or 'https://github.com/abvalatouski/manifest'.
+    echo.    or 'https://github.com/abvalatouski/sfshow'.
 
     exit /b
 )
